@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React from 'react';
+import Classical from './Classical';
+import Functional from './Functional';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component{
+  constructor(){
+    super();
+    this.state={
+     functionclick:false,
+     classclick:false
+    };
+  }
+  render(){
 
-export default App;
+  
+
+// function App() {
+//   const[status,setStatus]=React.useState(false);
+  return (
+    <>
+      <h1 className='head'>STYLING USING FUNCTIONAL AND CLASS COMPONENTS</h1>
+  
+  <div className='btn'>
+  <button type='button' onClick={()=>this.setState({functionclick: !this.state.functionclick})}>TO See Styling In Functional Component</button>
+  <button type='button' onClick={()=>this.setState({classclick: !this.state.classclick})}>TO See Styling In Class Component</button>
+  </div>
+  
+  <div className='card'>
+  {this.state.classclick && <Classical/> }
+  {this.state.functionclick && <Functional/>}
+  </div>
+ </>
+
+  )
+}
+}
+ export default App;
